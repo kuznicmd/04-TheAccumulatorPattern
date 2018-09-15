@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -110,19 +110,16 @@ def draw_parallel_lines(n, point, length, window):
     ####################################################################
     # ------------------------------------------------------------------
 
-    window = rg.RoseWindow
-
-    point = rg.Point
     x = point.x
     y = point.y
     for k in range(n):
-        rg.Line(point, (x + length, y))
-        y = y - 30
+        start = rg.Point(x, y)
+        end = rg.Point(x + length, y)
+        line = rg.Line(start, end)
+        line.attach_to(window)
+        y = y + 30
 
     window.render()
-    window.close_on_mouse_click()
-
-
 
 def run_test_draw_lines():
     """ Tests the   draw_lines  function. """
@@ -174,7 +171,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -188,6 +185,16 @@ def draw_lines(n, point, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    pX = point.x
+    pY = point.y
+    y = pY + 100
+    for k in range(n):
+        end = rg.Point(pX + 100, y)
+        line = rg.Line(point, end)
+        line.attach_to(window)
+        y = y - (200 / (n - 1))
+
+    window.render()
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
